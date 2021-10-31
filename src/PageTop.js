@@ -51,61 +51,37 @@ function App() {
       
       <main>
         {/* Hero unit */}
-      <Box sx={{bgcolor: 'background.paper', pt: 8, pb: 6,}} >
+       <Box sx={{bgcolor: 'background.paper', pt: 8, pb: 6,}} >
           <Container maxWidth="sm">
             <Typography variant="h5" align="center" color="text.secondary" paragraph>最新のWebサービス・アプリを紹介</Typography>
           </Container>
-      </Box>
+       </Box>
+       
 
-      <Grid container spacing={2}>
-        <Grid item xs={2}>
-         <Box component="img" sx={{
-           height: 150,
-           width: 150,
-           maxHeight: { xs: 233, md: 167 },
-           maxWidth: { xs: 350, md: 250 },
-          }}alt="The house from the offer."
-          src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-         />
-        </Grid>  
-
-        <Grid item xs={8}>
+       
         <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={4}>
+          <Grid container  spacing={4}  >
             {productCards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={6}>
                 <Card  sx={{ maxWidth: 400 }}>
-                 <CardMedia component="img" height="140" image={card.thumbnail} alt="green iguana"/>
+                <Link style={{color: "black" ,textDecoration: 'none'}} to={`/PageDetail/${card.id}`} onClick={() => history.push(`/PageDetail/${card.id}`)} >
+                 <CardMedia component="img" height="200" image={card.thumbnail} alt="green iguana"/>
                   <CardContent sx={{ flexGrow: 1 }}>
                      <Typography gutterBottom variant="h5" component="h2">{card.title}</Typography>
                      <Typography align="left">{card.body}</Typography>
                   </CardContent>
                   <CardActions>
                      <Button size="small">
-                       <Link to={`/PageDetail/${card.id}`} onClick={() => history.push(`/PageDetail/${card.id}`)} >詳細を見る</Link>
+                       {/*<Link to={`/PageDetail/${card.id}`} onClick={() => history.push(`/PageDetail/${card.id}`)} >詳細を見る</Link>*/}
                      </Button>
                   </CardActions>
+                  </Link>
                 </Card>
               </Grid>
             ))}
           </Grid>
          </Container>
-        </Grid>
-
-        <Grid item xs={2}>
-        <Box
-          component="img"
-          sx={{
-           height: 150,
-           width: 150,
-           maxHeight: { xs: 233, md: 167 },
-           maxWidth: { xs: 350, md: 250 },
-          }}
-          alt="The house from the offer."
-          src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-         />
-        </Grid>  
-      </Grid> 
+        
       </main>
 
       {/* Footer */}

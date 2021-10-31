@@ -10,7 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
-import MainFeaturedPost from './MainFeaturedPost';
 import ListItemText from '@material-ui/core/ListItemText';
 import { BrowserRouter as Router, Route, Link, useHistory, useParams } from 'react-router-dom';
 
@@ -35,7 +34,6 @@ function App() {
   },[]);
 
 
-
   return (
 
     <ThemeProvider theme={theme}>
@@ -51,13 +49,13 @@ function App() {
 
 
       <main>
-        {/* Hero unit */}
-        <Container sx={{ py: 8 }} maxWidth="md">
-          {/* End hero unit */}
-          <img src={dataDetail.thumbnail} style={{ maxHeight: "600px", maxWidth: "600px" }} />
-            <Grid container spacing={4}>
-            </Grid>
+      <Grid container direction="column" alignItems="center">
+      <Grid item>         
+        <Container sx={{ py: 5}} maxWidth="md" >  
+          <Box   style={{ maxWidth: "600px" }}>
 
+                 <img src={dataDetail.thumbnail} style={{ maxHeight: "600px", maxWidth: "600px" }} />
+            
                 <Box height={100} display="flex" justifyContent="center" alignItems="center" fontSize={36}
                  >{dataDetail.title}
                 </Box>
@@ -87,7 +85,7 @@ function App() {
                    display="flex"
                    justifyContent="flex-start"
                    alignItems="flex-start" style={{ color: '#000000' }}>
-                     <a target="_blank" href="https://www.google.com/?hl=ja">https://www.google.com/?hl=ja</a></Typography>}
+                     <a target="_blank" style={{color: "blue" ,textDecoration: 'none'}} href="https://www.google.com/?hl=ja">https://www.google.com/?hl=ja</a></Typography>}
                   />
                 </Box>
 
@@ -102,12 +100,14 @@ function App() {
                    display="flex"
                    justifyContent="flex-start"
                    alignItems="flex-start" style={{ color: '#1E90FF' }}>
-                     <a target="_blank" href="https://about.google">https://about.google</a></Typography>}
+                     <a target="_blank" style={{color: "blue" ,textDecoration: 'none'}} href="https://about.google">https://about.google</a></Typography>}
                   />
                 </Box> 
 
+          </Box>
         </Container>
-
+      </Grid>
+      </Grid>
       </main>
 
       {/* Footer */}
