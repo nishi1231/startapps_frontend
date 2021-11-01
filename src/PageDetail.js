@@ -12,6 +12,7 @@ import Container from '@material-ui/core/Container';
 import Grid from "@material-ui/core/Grid";
 import ListItemText from '@material-ui/core/ListItemText';
 import { BrowserRouter as Router, Route, Link, useHistory, useParams } from 'react-router-dom';
+import logo from './image/StartApps-logo.png';
 
 
 const theme = createTheme();
@@ -19,7 +20,6 @@ const theme = createTheme();
 function App() {
 
   const [dataDetail, setDate] = useState([]);
-  const history = useHistory();
   const { id } = useParams();
   const url = new URL('http://localhost:3000/apps/');
   const searchUrl = url + id
@@ -43,7 +43,7 @@ function App() {
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" noWrap>StartApps</Typography>
+          <img src={logo} alt="logo" width="15%" height="15%" />
         </Toolbar>
       </AppBar>
 
