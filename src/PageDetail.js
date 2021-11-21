@@ -5,12 +5,17 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 import './App.css';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
 import Grid from "@material-ui/core/Grid";
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import { BrowserRouter as Router, Route, Link, useHistory, useParams } from 'react-router-dom';
 import logo from './image/StartApps-logo.png';
 
@@ -33,6 +38,12 @@ function App() {
       );
   },[]);
 
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, value) => {
+  setValue(value);
+  };
+
 
   return (
 
@@ -40,74 +51,55 @@ function App() {
       <CssBaseline />
       <AppBar position="relative"  style={{ color: "#696969", backgroundColor: "#ffffff" }}>
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
-          <img src={logo} alt="logo" width="15%" height="15%" />
+           <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center">
+             <Grid item xs={3}>
+              <img src={logo} alt="logo"  width="200px" height="77px" />
+             </Grid>
+           </Grid> 
         </Toolbar>
       </AppBar>
 
 
       <main>
-      <Grid container direction="column" alignItems="center">
-      <Grid item>         
-        <Container sx={{ py: 5}} maxWidth="md" >  
-          <Box   style={{ maxWidth: "600px" }}>
 
-                 <img src={dataDetail.thumbnail} style={{ maxHeight: "600px", maxWidth: "600px" }} />
-            
-                <Box height={100} display="flex" justifyContent="center" alignItems="center" fontSize={36}
-                 >{dataDetail.title}
-                </Box>
+      <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto" aria-label="scrollable auto tabs ">
+          <Tab label="ALL" style={{ color: '#191970' }}/>
+          <Tab label="旅行" />
+          <Tab label="金融" />
+          <Tab label="不動産・建設" />
+          <Tab label="医療" />
+          <Tab label="飲食" />
+          <Tab label="エンタメ" />
+          <Tab label="メディア" />
+          <Tab label="ショッピング" />
+          <Tab label="クーポン" />
+          <Tab label="ライフスタイル" />
+          <Tab label="SNS" />
+          <Tab label="人事・労務" />
+          <Tab label="経理" />
+          <Tab label="開発" />
+        </Tabs>
 
-                <Box height={200} display="flex" justifyContent="flex-start" alignItems="flex-start" fontSize={18}>
-                  <ListItemText
-                   primary={<Typography variant="h6" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#000000' }}>サービス説明</Typography>}
+      <Box sx={{bgcolor: 'background.paper', pt: 1, pb: 1,}} >
+          <Container maxWidth="sm">
+          </Container>
+       </Box>
+      <Grid container >
 
-                   secondary={<Typography variant="h7" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#000000' }}>{dataDetail.body}</Typography>}
-                  />
-                </Box> 
+       <Grid item xs={1.5}></Grid>
 
-                <Box height={100} display="flex" justifyContent="flex-start" alignItems="flex-start" fontSize={18}>
-                  <ListItemText
-                   primary={<Typography variant="h6" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#000000' }}>公式ページ</Typography>}
+       <Grid item xs={9}>
+        <CardMedia component="img" maxHeight="400％" maxWidth="100％" image={dataDetail.thumbnail} alt="image"/>
+         <CardContent sx={{ flexGrow: 1 }}>
+           <Typography gutterBottom variant="h4" component="h2">{dataDetail.title}</Typography>
+           <Typography align="left">{dataDetail.body}</Typography>
+          </CardContent>
+       </Grid>
 
-                   secondary={<Typography variant="h7" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#000000' }}>
-                     <a target="_blank" style={{color: "blue" ,textDecoration: 'none'}} href="https://www.google.com/?hl=ja">https://www.google.com/?hl=ja</a></Typography>}
-                  />
-                </Box>
+       <Grid item xs={1.5}></Grid>
 
-                <Box height={100} display="flex" justifyContent="flex-start" alignItems="flex-start" fontSize={18}>
-                  <ListItemText
-                   primary={<Typography variant="h6" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#000000' }}>運営会社</Typography>}
-
-                   secondary={<Typography variant="h7" 
-                   display="flex"
-                   justifyContent="flex-start"
-                   alignItems="flex-start" style={{ color: '#1E90FF' }}>
-                     <a target="_blank" style={{color: "blue" ,textDecoration: 'none'}} href="https://about.google">https://about.google</a></Typography>}
-                  />
-                </Box> 
-
-          </Box>
-        </Container>
       </Grid>
-      </Grid>
+  
       </main>
 
       {/* Footer */}
